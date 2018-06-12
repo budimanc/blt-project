@@ -1,16 +1,47 @@
 {
-    "name": "acquia/blt-project",
-    "description": "Project template for Drupal 8 sites built with BLT.",
-    "type": "project",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "acquia/blt": "9.x-dev"
+  "name": "acquia/blt-project",
+  "description": "Project template for Drupal 8 sites built with BLT.",
+  "type": "project",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
     },
-    "require-dev": {},
-    "scripts": {
-      "post-create-project-cmd": [
-        "blt internal:create-project:init-repo"
-      ]
+    "asset-packagist": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
     }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "acquia/blt": "9.x-dev"
+  },
+  "require-dev": {
+    "acquia/blt-require-dev": "dev-master"
+  },
+  "extra": {
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "installer-types": ["bower-asset", "npm-asset"],
+    "installer-paths": {
+      "docroot/core": ["type:drupal-core"],
+      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
+      "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "docroot/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+      "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"],
+      "docroot/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    }
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "blt internal:create-project:init-repo"
+    ]
+  }
 }
