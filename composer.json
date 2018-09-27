@@ -29,7 +29,7 @@
         "sort-packages": true
     },
     "require": {
-        "acquia/blt": "dev-master",
+        "acquia/blt": "dev-remove-merge-plugin",
         "acquia/drupal-spec-tool": "^2.0.0",
         "acquia/lightning": "^3.1.0",
         "drupal/acquia_connector": "^1.5.0",
